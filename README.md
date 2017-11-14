@@ -1,4 +1,6 @@
 # Profit-Trailer-Settings
-Place to Store Config Files for profit trailer from the CryptoGnome's Group
 
+This is the home base for config files that I will be sharing on Youtube & our official Discord Channel.
+
+# To get the bot set up and running please go here first:
 

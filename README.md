@@ -1,6 +1,3 @@
-# Profit-Trailer-Settings
+# Please Visit the WIKI Tab above for all info.
 
-This is the home base for config files that I will be sharing on Youtube & our official Discord Channel.
-
-# To get the bot set up and running please go here first:
 

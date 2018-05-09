@@ -6,9 +6,6 @@ https://profittrailer.com/pt/CryptoGnome/
 ProfitTrailer Feeder:
 https://cryptoprofitbot.com/?ref=CryptoGnome
 
-PTtracker:
-http://pttracker.net/?r=3
-
 CryptoHopper (Try it FREE for 30 Day's):
 https://www.cryptohopper.com/?atid=744
 

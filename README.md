@@ -4,7 +4,7 @@ ProfitTrailer: https://profittrailer.com/pt/CryptoGnome/
 
 ProfitTrailer Feeder: https://cryptoprofitbot.com/?ref=CryptoGnome
 
-PTDefender: https://www.ptdefender.com/CryptoGnome
+PTDefender: https://www.ptdefender.com/r/CryptoGnome
 
 CryptoHopper (Try it FREE for 30 Day's): https://www.cryptohopper.com/?atid=744
 

@@ -1,0 +1,319 @@
+# -----------------------------------------------------------------
+#                      CRYPTOGNOMES LOW BALANCE SETTINGS
+# -----------------------------------------------------------------
+# ----BTC MARKET SETTING----
+market = BTC
+# -----------------------------------------------------------------
+# -----------------------------------------------------------------
+#                       Global Trading Settings
+# Define your starting balance from the exchange
+# Enable trading (buying,selling and orders) using defined strategies for all pairs
+# If trading_enabled = false your running pairs/pendings orders and balance will
+# still be displayed in watchmode
+#
+DEFAULT_trading_enabled = true
+# Note: You also still need to set this value in DCA.properties if you always want some balance left
+# Example. To always leave 60% of my account untouched. set value to 60%
+start_balance = 1
+# Note: If DCA is enabled you also still need to set this value in DCA.properties if you always want some balance left.
+# -----------------------------------------------------------------
+#            Trading Budget balance protection mechanisms
+# -----------------------------------------------------------------
+# Only buy coins if the buy cost will not let your balance go below specified amount
+# exchange because it falls below their minimum sell amount.
+# Following ensures all your current pairs in exchange are shown
+keep_balance = 0.0
+# -----------------------------------------------------------------
+# Only buy coins if the buy cost will not let your balance go below specified amount in %
+# This property only works if DEFAULT_keepbalance = 0
+# We now manage by exception and black list the pairs we dont want to trade
+keep_balance_percentage = 0
+# while our pairs log clears or we DCA until we clear the pairs.
+# ProfitTrailer now uses Bolinger Bands strategies to buy low and sell high.
+# -----------------------------------------------------------------
+#                      Exchange Dust Settings
+# -----------------------------------------------------------------
+#
+# ?Dust? is the technical term for an amount of coin left over from
+# an incomplete sell that is too small for the bot to sell on the
+# set whichever is appropriate for your MARKET setting
+#
+# a. Shotgun pairs - target any pair that has had a rise in the last 3 days
+BTC_dust = 0.00205
+#     1. First pass is to look for sawtooth pattern in normal manner by eyeballing the charts, this gets you a baseline set of pairs to work with;
+#     2. Second pass is to examine baseline pairs and use the charts to target any pair that has had a rise in the last 3 days and has high volume only; and
+#                  Pick Good Trading Pairs Settings
+# -----------------------------------------------------------------
+# 1st pass using charts and sawtooth pattern - DEFAULT_enabled_pairs = ADT,ARK,BAY,BCC,BLK,CFI,CVC,DASH,DCR,DCT,DGB,DNT,EBST,EDG,ENG,ENRG,ETC,ETH,EXP,FCT,FUN,GNT,HMQ,IOP,KMD,LBC,LMC,LSK,MAID,NAV,NEO,NLG,NXT,OK,OMG,QTUM,RCN,SALT,SNT,STEEM,STORJ,SYS,UBQ,VIA,VRM,WAVES,XEM,XLM,XMR,XRP,XVG,XZC,ZEC,ZEN
+# We have changed the way we pick pairs as of v1.0.6 we let the bot do the work for us.
+#
+# and only take the top volume pairs. We let the bot take its time to pick good pairs
+#
+# Our goal is to be in and out of a trade quickly. We therefore want pairs that will clear quickly
+# This method hinges on picking good pairs you think are going to be volatile.
+#
+# When picking pairs manually You want to look for a good argument
+# happening on the coin i.e. lots of ups and downs with a pattern like a saw blade.
+# The longer that sawblade pattern (oscilation) goes sideways or upwards the better.
+#
+# If market goes bad try the following two strategies:
+# b. Sniper pairs - sniper pairs use 3 passes:
+#     3. Third pass is to use your exchange and target pairs with > 600 in volume only.
+#
+# Here is what the passes look like, note each pass has less and less pairs:
+# 2nd pass using charts and looking for rise in last 3 days volume - DEFAULT_enabled_pairs = ADT,BCC,DGB,DNT,EDG,ETC,ETH,IOP,KMD,LSK,MAID,NEO,RCN,SALT,SYS,UBQ,XEM,XLM,XRP,XVG
+# 3rd pass using exchange volumes > 600 - DEFAULT_enabled_pairs = ADA,DGB,IOP,LSK,SALT,XEM,XLM,XRP,XVG
+# This DEFAULT_initial_cost property only works if DEFAULT_initial_cost_percentage = 0
+enabled_pairs = ALL
+# The alternative to setting an initial cost is to use an initial cost percentage.
+# This will hide any pairs that you have disabled
+# Below setting represents 1% of your total current value (TCV) of account will be used for buys
+hidden_pairs = BTC
+# If set to true, it will look at the highest bid order with enough volume rather than just the highest bid order.
+# Adjust trading pairs based on server capability and trading budget
+# Max amount of pairs that the bot is allowed Once the max is reached,
+# the bot will not buy any new pairs until we sell.
+#             Dollar Cost Averaging
+# NOTE: If DCA is enabled DCA is still allowed to buy regardless of
+# all your other settings. It will buy according to DCA file settings.
+# Set to true to always have pairs go to DCA
+max_trading_pairs = 30
+# -----------------------------------------------------------------
+# Volume Settings
+# -----------------------------------------------------------------
+# Only buy coins with a minimum volume of specified amount.
+# Is the coin in oversold territory?
+# We have changed the way we pick pairs as of version 1.0.6 of the settings.
+# We now manage by exception and black list the pairs we dont want to trade
+# and only take the top volume pairs. This gives people good quality pairs
+# without the need to recognise the sawtooth pattern and do chart anlaysis.
+#
+# Rebuy timeout setting
+DEFAULT_min_buy_volume = 200
+# Volume buy trigger
+# Allow initial buys if there is enough volume in order book to fill the order.
+# Pair Minimum Age - documentation only coin_min_age in pairs.properties (not live yet)
+#
+# coin_min_age is defined in days, it is used to allow the bot to trade only with coins which are older than x days,
+# i.e. which are listed at least since x days
+# least 7.5 coins at price A or lower before it will be allowed to buy.
+pair_min_listed_days = 30
+#                       Sell Strategy
+# Set to ignore low satoshi coins.
+#
+DEFAULT_min_buy_price = 0.000000060
+#
+# Only purchase a pair if the 24 hour percentage change is above the min price increase.
+# Set to zero to disable this.
+DEFAULT_buy_min_change_percentage = 0
+# above xx percent, defined on the line below this, but has not yet sold. Set to zero to disable this.
+# New in 2.x, the profit percentage above which the bot will attempt to sell a pair if it has
+# Only purchase a pair if the 24 hour percentage change is below the max price increase.
+# Hoping this will assist with clearing pairs when the market goes sideways.
+DEFAULT_buy_max_change_percentage = 30
+# before resetting the DEFAULT_take_profit_wait_time. If the deviation is exceeded the new price
+# is monitored for the deviation and the wait_time starts again. Set to 0 to reset the wait_time
+# Max spread % between lowest ask and highest bid to allow a new buy order.
+# If the spread is too big then most likely there was a pump and dump on the pair and you are buying too high
+#              STOP LOSS
+DEFAULT_max_buy_spread = 1
+# Set the value that will trigger a stop loss order If the value of a coin
+# drops below stop loss trigger, it will be automatically sold
+# -----------------------------------------------------------------
+#                      Initial Cost Settings
+# -----------------------------------------------------------------
+#             PANIC BUTTON
+# -----------------------------------------------------------------
+#DEFAULT_initial_cost_percentage = 0
+#             PENDING ORDER SETTINGS
+# This is much better as by using a percentage your buys will grow over time as your TCV grows.
+# This property only works if DEFAULT_initial_cost = 0
+# exchange at your minimum profit level. it is useful for a coin that you've
+DEFAULT_initial_cost = 0.0015
+DEFAULT_initial_cost_percentage = 0
+# on it. So it creates a fixed sell order on the exchange, allowing the coin to
+# This gives you a more realistic representation of your position and allows the bot to make a sale it
+# otherwise not have even attempted. When false it only looks at the highest bid order to calculate profit percentage.
+#                Sell Only Mode Protection Mechanisms
+orderbook_profit_calculation = true
+# SOM Trigger settings
+#
+# -----------------------------------------------------------------
+# -----------------------------------------------------------------
+# ProfitTrailer to reset it. Set to zero to disable SOM.
+# Set to zero to disable DCA
+# Set to -1 to always have pairs go to DCA if the profit percentage drops below -1% i.e -2%, -5%, etc.
+#price_rise_recover_trigger = 0
+DEFAULT_DCA_enabled = true
+#price_drop_recover_trigger = 0
+#                        Buy Strategy Settings
+#price_drop_trigger = 10
+#price_drop_recover_trigger = 3
+# *************************************************************************
+#price_rise_trigger = 3
+#price_rise_recover_trigger = 2
+#price_drop_recover_trigger = 3
+DEFAULT_A_buy_strategy = MACD
+DEFAULT_A_buy_value = 0.000000001
+DEFAULT_A_buy_value_limit = 1
+#
+DEFAULT_B_buy_strategy = RSI
+DEFAULT_B_buy_value = 55
+DEFAULT_B_buy_value_limit = 0
+#
+# Once all buy strategies are true, the bot will make note of the current ask
+# price and begin trailing. The price needs to fall and then rise by at least
+# the percentage specified in order for a buy to be attempted. It will try
+# to catch the price at its lowest point before trailing back up and buying.
+DEFAULT_trailing_buy = 0
+#
+#consecutive_buy_trigger = 8
+# (i.e.market is recovering and trending upwards). Set to Zero to disable this.
+# Set the amount of minutes that the bot is not allowed to buy a coin after it was sold.
+#consecutive_sell_trigger = 0
+DEFAULT_rebuy_timeout = 15
+#
+#
+# This helps against partial buys.
+# 100 means there should be at least 100% of the amount we want to buy in the orderbook.
+# 150 means there should be 150% of the amount we want to buy in the orderbook to issue
+# the buy order. So if you need 5 coins at price A, at 150, the orderbook should have at
+#
+# This is for the pairs you do not wish to trade, examples only below,
+DEFAULT_min_orderbook_volume_percentage = 100
+# above is appearing below or that pair wont trade.
+#
+# -----------------------------------------------------------------
+# -----------------------------------------------------------------
+# that is now black listed.
+# What is the minimum profit we want to make on this trade?
+DEFAULT_A_sell_strategy = GAIN
+DEFAULT_A_sell_value = 0.55
+# ****BINANCE SETTING****
+DEFAULT_trailing_profit = 0.027
+# Pairs delisted from the exchanges
+#*********************************
+#8BIT_trading_enabled = false
+# New in 2.x, this will sell a pair regardless of other settings if max profit is reached
+#CMT_trading_enabled = false
+DEFAULT_max_profit = 0
+#*********************************
+# New in 2.x, the time period to wait define in munutes while the profit percentage remains
+#*********************************
+DEFAULT_take_profit_wait_time = 0
+#
+# 2.x implement local consecutive buy and sell triggers. so even Binance has support
+# not sold for xx minutes, defined on the line above this. Set to zero to disable this.
+# (i.e. if we got x consecutive buys and no sells in between, this can indicate
+DEFAULT_take_profit_percentage = 0
+#consecutive_buy_trigger = 0
+#
+# New in 2.x, the percentage of price deviation allowed from the DEFAULT_take_profit_percentage
+# every time the price changes.
+#
+DEFAULT_take_profit_reset_percentage_move = 0
+# Turn off sell only mode if we got x consecutive sells with no buys in between
+#
+# -----------------------------------------------------------------
+# -----------------------------------------------------------------
+#
+# NOTE: stop loss positive values are automatically converted to negative value
+#consecutive_sell_trigger = 1
+DEFAULT_stop_loss_trigger = 4
+#                         The Black List
+# Set the amount of minutes that the bot is not allowed to buy a coin after if was sold by stop loss trigger
+# you need to add your own list here. Make sure none of your enabled pairs
+DEFAULT_stop_loss_timeout = 120
+#
+# -----------------------------------------------------------------
+# Set to true to sell all of your coins with a balance for current market prices
+# Note: example only below, replace the POA below with the pair you wish to clear
+DEFAULT_panic_sell_enabled = false
+#POA_trading_enabled = false
+# -----------------------------------------------------------------
+# -----------------------------------------------------------------
+# If x amount of time in minutes has passed since you bought a coin, create a pending order for that pair
+# This enabled the bot to buy this pair again without selling the old one
+# The pending order wait time command will place a fixed sell order on the
+# purchased but it has dropped in value significantly and you know you could
+# make profits on that coin by buying now if you didn't already have a large DCA
+# be traded again (excluding the amount in the sell order)
+
+DEFAULT_pending_order_wait_time = 0
+
+# Cancel pending order for specified coin if avg profit reaches specified amount
+
+DEFAULT_combined_cancel_pending_trigger = 0
+
+
+# -----------------------------------------------------------------
+# -----------------------------------------------------------------
+
+DEFAULT_sell_only_mode_enabled = false
+
+
+# This is to protect against Bitcoin rising (aka mooning) or dropping
+# automatically turns on / off SOM as required.
+# If you notice that it hasnt turned off after a long time you can restart
+#
+#price_trigger_market = BTC
+#price_rise_trigger = 0
+#price_drop_trigger = 0
+price_trigger_market = BTC
+
+#
+
+#price_rise_trigger = 7
+#price_rise_recover_trigger = 6
+
+
+#
+
+#price_drop_trigger = 5
+
+# Consecutive Buy triggers
+# Protect against large market swings by turning on sell only mode.
+# that the market is on a downward trend). Set to Zero to disable this.
+#
+#
+consecutive_buy_trigger = 0
+#
+
+#
+#
+consecutive_sell_trigger = 0
+#
+
+
+
+# -----------------------------------------------------------------
+# -----------------------------------------------------------------
+# Clear any pairs that have been removed as a result of Black listing
+# Uncomment the lines below if you want to clear a previous pair you may be holding
+#
+#
+#POA_sell_only_mode = true
+
+
+
+# BNB fees are not yet supported in Binance, so dont buy BNB until you disable the setting
+BNB_trading_enabled = false
+
+
+
+
+
+
+# Pairs on temporary ban
+#*********************************
+
+
+
+# Pairs that I wont day trade with
+#BITB_trading_enabled = false
+
+
+
+# Pairs I want to HODL
+#ETH_trading_enabled = false
+default_trailing_profit_type = GROW

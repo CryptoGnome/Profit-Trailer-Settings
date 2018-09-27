@@ -171,7 +171,7 @@ DEFAULT_trailing_buy = 0
 # (i.e.market is recovering and trending upwards). Set to Zero to disable this.
 # Set the amount of minutes that the bot is not allowed to buy a coin after it was sold.
 #consecutive_sell_trigger = 0
-DEFAULT_rebuy_timeout = 15
+DEFAULT_rebuy_timeout = 45
 #
 #
 # This helps against partial buys.

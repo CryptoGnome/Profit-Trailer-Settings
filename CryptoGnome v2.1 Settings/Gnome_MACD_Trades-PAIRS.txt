@@ -1,5 +1,5 @@
 # -----------------------------------------------------------------
-#                      CRYPTOGNOMES LOW BALANCE SETTINGS
+#                      CRYPTOGNOMES MACD SETTINGS
 # -----------------------------------------------------------------
 # ----BTC MARKET SETTING----
 market = BTC
@@ -68,7 +68,7 @@ enabled_pairs = ALL
 # The alternative to setting an initial cost is to use an initial cost percentage.
 # This will hide any pairs that you have disabled
 # Below setting represents 1% of your total current value (TCV) of account will be used for buys
-hidden_pairs = BTC
+hidden_pairs = BNB
 # If set to true, it will look at the highest bid order with enough volume rather than just the highest bid order.
 # Adjust trading pairs based on server capability and trading budget
 # Max amount of pairs that the bot is allowed Once the max is reached,

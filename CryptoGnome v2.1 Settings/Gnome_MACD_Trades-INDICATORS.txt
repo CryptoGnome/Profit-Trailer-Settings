@@ -130,7 +130,7 @@ MACD_slow_length = 26
 
 # Define the time frame (in days) of the EMA (Exponential Moving Average) of the MACD
 #MACD_signal = 9
-MACD_signal = 1
+MACD_signal = 9
 
 
 # OBV is based on absolute volume values, the current PT approach is based on changes between exactly two candles.

@@ -125,7 +125,7 @@ DEFAULT_DCA_trailing_buy = 0
 
 # -----------------------------------------------------------------
 # -----------------------------------------------------------------
-DEFAULT_DCA_A_sell_value = 
+DEFAULT_DCA_A_sell_value = 0.7
 
 DEFAULT_DCA_trailing_profit = 0.025
 DEFAULT_DCA_max_profit = 0

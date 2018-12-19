@@ -125,6 +125,7 @@ DEFAULT_DCA_trailing_buy = 0
 
 # -----------------------------------------------------------------
 # -----------------------------------------------------------------
+DEFAULT_DCA_A_sell_strategy = GAIN
 DEFAULT_DCA_A_sell_value = 0.7
 
 DEFAULT_DCA_trailing_profit = 0.025
@@ -167,5 +168,3 @@ default_dca_buy_percentage_5 = 100
 default_dca_buy_trigger = -0.5
 default_dca_a_buy_strategy = RSI
 default_dca_b_buy_strategy = MACD
-default_dca_b_sell_strategy = GAIN
-default_dca_b_sell_value = 0.55

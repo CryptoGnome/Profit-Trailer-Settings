@@ -19,3 +19,5 @@ TradingView (Try it FREE for 30 Day's): https://tradingview.go2cloud.org/aff_c?o
 CoinBase (Get $10 Free): https://www.coinbase.com/join/596e0bae9fb680020742d903
 
 Kucoin: https://www.kucoin.com/#/?r=N7cdeM
+
+bybit: https://www.bybit.com/app/register?affiliate_id=767&language=en&group_id=206&group_type=1
